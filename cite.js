@@ -7,9 +7,10 @@ function myFunction() {
     tr = table.getElementsByTagName("tr");
     const showedTr = table.getElementsByClassName('show');
     const fTr = (input.value !=="" && showedTr.length>0) ? showedTr : tr;
+    let noDoubleArr;
 
-    const newDiv = document.getElementById("filter");
-    const arr = [];
+    const newDiv = document.getElementById("fltr");
+    let arr = [];
     newDiv.replaceChildren([]);
 
 
@@ -23,36 +24,24 @@ function myFunction() {
             cell = fTr[i].getElementsByTagName("td")[j];
             if (cell) {
                 if (cell.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                    if (arr.length===0) {
 
-                        const cellValue = String(cell.innerHTML.toUpperCase());
-                        arr.push(cellValue);
-                        newContent = document.createTextNode(cell.innerHTML.toUpperCase());
-
+                    const cellValue = String(cell.innerHTML.toUpperCase());
+                    arr.push(cellValue);
+                    noDoubleArr = [...new Set(arr)];
+                    newDiv.replaceChildren([]);
+                    noDoubleArr.map(item => {
+                        newContent = document.createTextNode(item);
                         const newP = document.createElement("p");
                         newP.appendChild(newContent);
                         newP.addEventListener("click", function() {
-                            input.value = cellValue;
+                            input.value = item;
                             myFunction();
+                            newDiv.classList.add('filterHide');
                         });
                         newDiv.appendChild(newP);
-                        newDiv.classList.remove('filterHide');
-                    } else {
-                        const checkFilter = arr.filter(i => {
-                            i===cell.innerHTML.toUpperCase()});
-                        if (checkFilter.length===0) {
-                            arr.push(cell.innerHTML.toUpperCase());
-                            newContent = document.createTextNode(cell.innerHTML.toUpperCase());
-                            const cellValue = cell.innerHTML.toUpperCase();
-                            const newP = document.createElement("p");
-                            newP.appendChild(newContent);
-                            newP.addEventListener("click", function() {
-                                input.value = cellValue;
-                                myFunction();
-                            });
-                            newDiv.appendChild(newP);
-                        }
-                    }
+                    })
+
+                    newDiv.classList.remove('filterHide');
 
                     fTr[i].classList.remove('hidden');
                     fTr[i].classList.add('show');
@@ -62,7 +51,6 @@ function myFunction() {
                     }
                     break;
                 } }}}}
-
 
 function myFunction2() {
     let input, filter, table, tr, td, cell, i, j, newContent;
@@ -72,9 +60,10 @@ function myFunction2() {
     tr = table.getElementsByTagName("tr");
     const showedTr = table.getElementsByClassName('show');
     const fTr = (input.value !=="" && showedTr.length>0) ? showedTr : tr;
+    let noDoubleArr;
 
     const newDiv = document.getElementById("fltr2");
-    const arr = [];
+    let arr = [];
     newDiv.replaceChildren([]);
 
 
@@ -87,38 +76,26 @@ function myFunction2() {
 
             cell = fTr[i].getElementsByTagName("td")[j];
             if (cell) {
+
                 if (cell.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                    if (arr.length===0) {
+
 
                         const cellValue = String(cell.innerHTML.toUpperCase());
                         arr.push(cellValue);
-                        newContent = document.createTextNode(cell.innerHTML.toUpperCase());
-
-                        const newP = document.createElement("p");
-                        newP.appendChild(newContent);
-                        newP.addEventListener("click", function() {
-                            input.value = cellValue;
-                            myFunction2();
-                        });
-                        newDiv.appendChild(newP);
-                        newDiv.classList.remove('filterHide');
-                    } else {
-                        const checkFilter = arr.filter(i => {
-                            i===cell.innerHTML.toUpperCase()});
-                        if (checkFilter.length===0) {
-                            arr.push(cell.innerHTML.toUpperCase());
-                            console.log(arr)
-                            newContent = document.createTextNode(cell.innerHTML.toUpperCase());
-                            const cellValue = cell.innerHTML.toUpperCase();
+                        noDoubleArr = [...new Set(arr)];
+                        newDiv.replaceChildren([]);
+                        noDoubleArr.map(item => {
+                            newContent = document.createTextNode(item);
                             const newP = document.createElement("p");
                             newP.appendChild(newContent);
                             newP.addEventListener("click", function() {
-                                input.value = cellValue;
+                                input.value = item;
                                 myFunction2();
+                                newDiv.classList.add('filterHide');
                             });
                             newDiv.appendChild(newP);
-                        }
-                    }
+                        })
+                        newDiv.classList.remove('filterHide');
 
                     fTr[i].classList.remove('hidden');
                     fTr[i].classList.add('show');
@@ -129,50 +106,16 @@ function myFunction2() {
                     break;
                 } }}}}
 
-// function myFunction2() {
-//     var input2, filter2, table, tr, td, cell, i, j;
-//     input2 = document.getElementById("mySecondInput");
-//     filter2 = input2.value.toUpperCase();
-//     table = document.getElementById("myTable");
-//     tr = table.getElementsByTagName("tr");
-//     showedTr = table.getElementsByClassName('show');
-//     fTr = showedTr.length>0 ? showedTr : tr;
-//
-//     //console.log(fTr);
-//     for (i = 0; i < fTr.length; i++) {
-//         // Hide the row initially.
-//         //fTr[i].classList.remove('show');
-//         fTr[i].classList.add('hidden');
-//
-//
-//         td = fTr[i].getElementsByTagName("td");
-//         for (var j = 0; j < td.length; j++) {
-//             cell = fTr[i].getElementsByTagName("td")[j];
-//             if (cell) {
-//                 if (cell.innerHTML.toUpperCase().indexOf(filter2) > -1) {
-//                     fTr[i].classList.remove('hidden');
-//                     fTr[i].classList.add('show');
-//                     break;
-//                 }
-//
-//             }
-//         }
-//     }
-//
-// }
-
 function clearFilters () {
 
     let input, input2, table, tr, i;
     table = document.getElementById("myTable");
     tr = table.getElementsByTagName("tr");
-    //console.log(tr)
     input = document.getElementById("myInput");
     input2 = document.getElementById("mySecondInput");
     input.value = "";
     input2.value = "";
     for (i = 0; i < tr.length; i++) {
-        console.log(i, tr.length);
         tr[i].classList.remove('hidden');
         tr[i].classList.remove('show');
     }
