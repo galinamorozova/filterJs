@@ -1,0 +1,35 @@
+
+.container {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.table {
+    width: 50%;
+    margin-top: 40px;
+}
+
+.show {
+    display: "";
+}
+
+.hidden {
+    display: none;
+}
+
+.filter {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 200px;
+    margin: 0;
+    /* position: absolute; */
+    z-index: 10;
+    background-color: white;
+    padding: 5px;
+    display: "";
+}
+.filterHide {
+    display: none;
+}

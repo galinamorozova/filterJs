@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="container">
+    <div>
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for number" title="Type in a name">
+        <button onclick="clearFilter1()">x</button>
+<!--        <div id="filter" class="filter filterHide"></div>-->
+    </div>
+    <div>
+        <input type="text" id="mySecondInput" onkeyup="myFunction2()" placeholder="Search for country" title="Type in a name">
+        <button onclick="clearFilter2()">x</button>
+<!--        <div id="fltr2" class="filter filterHide"></div>-->
+    </div>
+    <button onclick="clearFilters()">clear filters</button>
+</div>
+
+<table class="table" id="myTable">
+    <tr>
+        <td>1234</td>
+        <td>Germany</td>
+    </tr>
+    <tr>
+        <td>67543</td>
+        <td>Sweden</td>
+    </tr>
+    <tr>
+        <td>6543</td>
+        <td>UK</td>
+    </tr>
+    <tr>
+        <td>23456</td>
+        <td>Germany</td>
+    </tr>
+    <tr>
+        <td>43656745</td>
+        <td>Canada</td>
+    </tr>
+    <tr>
+        <td>123456</td>
+        <td>Italy</td>
+    </tr>
+    <tr>
+        <td>132456</td>
+        <td>UK</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>France</td>
+    </tr>
+</table>
+<script src="cite.js"></script>
+</body>
+</html>
