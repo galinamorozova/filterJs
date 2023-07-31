@@ -98,7 +98,7 @@ function myFunction2() {
                         newP.appendChild(newContent);
                         newP.addEventListener("click", function() {
                             input.value = cellValue;
-                            myFunction();
+                            myFunction2();
                         });
                         newDiv.appendChild(newP);
                         newDiv.classList.remove('filterHide');
@@ -107,13 +107,14 @@ function myFunction2() {
                             i===cell.innerHTML.toUpperCase()});
                         if (checkFilter.length===0) {
                             arr.push(cell.innerHTML.toUpperCase());
+                            console.log(arr)
                             newContent = document.createTextNode(cell.innerHTML.toUpperCase());
                             const cellValue = cell.innerHTML.toUpperCase();
                             const newP = document.createElement("p");
                             newP.appendChild(newContent);
                             newP.addEventListener("click", function() {
                                 input.value = cellValue;
-                                myFunction();
+                                myFunction2();
                             });
                             newDiv.appendChild(newP);
                         }
